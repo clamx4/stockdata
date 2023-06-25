@@ -18,6 +18,7 @@ jobs:
           node-version: '18.x'
       - run: ls
       - run: ls -l index
+      - run: git fetch origin wsj
       - run: git checkout 8df7a33e204a4e0b057ade7ababd7cddd1788881 wsj/package.json
       - run: git checkout 8df7a33e204a4e0b057ade7ababd7cddd1788881 wsj/historicalPrices.js
       - run: cat wsj/historicalPrices.js
