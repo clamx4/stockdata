@@ -42,10 +42,11 @@ jobs:
       - run: git diff
       - working-directory: index
         run: git add *.csv
+      - run: git status
       - run: git commit -m 'update index'
       - run: git status
       - run: git log -2
       - run: git branch -a
       - run: git branch -vv
 
-#       - run: git push origin main
+      - run: git push origin main
