@@ -18,8 +18,8 @@ jobs:
           node-version: '18.x'
       - run: ls
       - run: ls -l index
-      - run: git checkout 0e67eddf780540e009a9e5ec0e1ae4b778e5c03f wsj/package.json
-      - run: git checkout 0e67eddf780540e009a9e5ec0e1ae4b778e5c03f wsj/historicalPrices.js
+      - run: git checkout 8df7a33e204a4e0b057ade7ababd7cddd1788881 wsj/package.json
+      - run: git checkout 8df7a33e204a4e0b057ade7ababd7cddd1788881 wsj/historicalPrices.js
       - run: cat wsj/historicalPrices.js
       - run: npm i --prefix=wsj
       - run: git log -2
@@ -28,8 +28,8 @@ jobs:
       - run: echo "got latest stockdata"
       
       - run: echo "start update index"
-#       - run: node wsj/historicalPrices.js
-      - working-directory: stockdata
+      - run: node wsj/historicalPrices.js
+      - working-directory: index
         run: ls -l
       
       - run: echo "start pushing stockdata"
