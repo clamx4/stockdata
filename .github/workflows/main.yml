@@ -1,0 +1,50 @@
+name: update index
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "* * * * 5"
+
+jobs:
+  update-stockdata-wsj-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: ls
+      - run: ls -l index
+      - run: git checkout 0e67eddf780540e009a9e5ec0e1ae4b778e5c03f wsj/package.json
+      - run: git checkout 0e67eddf780540e009a9e5ec0e1ae4b778e5c03f wsj/historicalPrices.js
+      - run: cat wsj/historicalPrices.js
+      - run: npm i --prefix=wsj
+      - run: git log -2
+      - working-directory: index
+        run: head SPX.csv
+      - run: echo "got latest stockdata"
+      
+      - run: echo "start update index"
+#       - run: node wsj/historicalPrices.js
+      - working-directory: stockdata
+        run: ls -l
+      
+      - run: echo "start pushing stockdata"
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - run: git status
+      - run: git diff
+      - working-directory: index
+        run: git add *.csv
+      - run: git commit -m 'update index'
+      - run: git status
+      - run: git log -2
+      - run: git branch -a
+      - run: git branch -vv
+
+#       - run: git push origin main
