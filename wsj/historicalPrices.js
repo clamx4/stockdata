@@ -34,6 +34,8 @@ const update = async index => {
   const csvText = await getCsvFromWsj(index, lastDay, oneYearLater);
   await sleep(100);
   const headerLineCount = 1;
+  console.log(`index: ${index}`);
+  console.log(csvText);
   const recordsFromWsj = csvText.split('\n').slice(headerLineCount);
   let duplicateLineCount = 0;
   for (let i = recordsFromWsj.length - 1; i >= 0; i--) {
