@@ -21,8 +21,8 @@ jobs:
       - run: ls
       - run: ls -l index
       - run: git fetch origin wsj
-      - run: git checkout 8df7a33e204a4e0b057ade7ababd7cddd1788881 wsj/package.json
-      - run: git checkout 8df7a33e204a4e0b057ade7ababd7cddd1788881 wsj/historicalPrices.js
+      - run: git checkout 098c704b2336f75ee56b75a9181653eb6df80f8d wsj/package.json
+      - run: git checkout 098c704b2336f75ee56b75a9181653eb6df80f8d wsj/historicalPrices.js
       - run: cat wsj/historicalPrices.js
       - run: npm i --prefix=wsj
       - run: git log -2
