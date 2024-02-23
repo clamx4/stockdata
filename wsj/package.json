@@ -1,7 +1,4 @@
 {
-  "type": "module",
-  "dependencies": {
-    "node-fetch": "latest"
-  }
+  "type": "module"
 }
 
